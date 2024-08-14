@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Todo from './Todo';
 import AddTodo from './AddTodo';
 
@@ -31,13 +31,26 @@ function App() {
     setTodoItems([...todoItems, newItem]);
   }
   return (
-    <div className="App">
-      <AddTodo addItem={addItem}/>
-      {todoItems.map((item) => {
-        console.log("items >>> ", item);
-        return <Todo key={item.id} item={item}/>
-      })}
-    </div>
+    <Router >
+      <div className="App">
+        <Routes>
+          <Route path='/'>
+
+          </Route>
+          <Route path='/mypage'>
+
+          </Route>
+          <Route path='/todos'>
+            <AddTodo addItem={addItem}/>
+                {todoItems.map((item) => {
+                  console.log("items >>> ", item);
+                  return <Todo key={item.id} item={item}/>
+            })}
+          </Route>
+        </Routes>
+      </div>
+    </Router>
+    
   );
 }
 
