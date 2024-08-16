@@ -1,9 +1,13 @@
 const { Todo }  = require('../models');
 const { Op } = require('sequelize');
 
-exports.readTodos = async (_, res) => {
+exports.readTodos = async (req, res) => {
     try {
-        let todos = await Todo.findAll();
+        let todos = await Todo.findAll({
+            where: {
+                user_
+            }
+        });
         res.send(todos);
     } catch (err) {
         res.send(err);

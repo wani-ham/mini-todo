@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+// import './styles/AppTodo.scss';
 
 export default function AddTodo({addItem}) {
     const [todoItem, setTodoItem] = useState({
@@ -19,7 +20,7 @@ export default function AddTodo({addItem}) {
                     value={todoItem.title}
                     onChange={(e) => setTodoItem({title: e.target.value})}
                 ></input>
-                <button onClick={{onButtonClick}}></button>
+                <button onClick={{onButtonClick}}>Add</button>
             </div>
             
         </>

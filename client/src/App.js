@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Todo from './Todo';
 import AddTodo from './AddTodo';
+import Login from './Login';
+// import './styles/App.scss';
 
 function App() {
   const [todoItems, setTodoItems] = useState([
@@ -34,19 +36,17 @@ function App() {
     <Router >
       <div className="App">
         <Routes>
-          <Route path='/'>
-
-          </Route>
-          <Route path='/mypage'>
-
-          </Route>
-          <Route path='/todos'>
-            <AddTodo addItem={addItem}/>
-                {todoItems.map((item) => {
+          <Route path='/' element={<h1>Hello</h1>}/>
+          {/* <Route path='/' element={!hasCoockie ? <Redirect to="/login" /> : <Redirect to="/todo" />s}/> */}
+          <Route path='/login' element={<Login />}/>
+          <Route path='register' element={<h1>register</h1>}/>
+          <Route path='/mypage' element={<h1>mypage</h1>}/>
+          <Route path='/todos' element={<AddTodo addItem={addItem}/>} />
+            
+                {/* {todoItems.map((item) => {
                   console.log("items >>> ", item);
-                  return <Todo key={item.id} item={item}/>
-            })}
-          </Route>
+                  return <Todo key={item.id} item={item}/> */}
+            {/* })} */}
         </Routes>
       </div>
     </Router>
