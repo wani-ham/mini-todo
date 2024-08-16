@@ -3,9 +3,10 @@ const { Op } = require('sequelize');
 
 exports.readTodos = async (req, res) => {
     try {
+        const user_num = 1;  // temp user_num
         let todos = await Todo.findAll({
             where: {
-                user_
+                user_num
             }
         });
         res.send(todos);
@@ -18,6 +19,7 @@ exports.createTodo = async (req, res) => {
     console.log('req.body >>> ', req.body);
     try {
         let newTodo = await Todo.create({
+            user_num,
             title: req.body.title,
             done: false
         });
@@ -32,6 +34,7 @@ exports.updateTodo = async (req, res) => {
     try {
         let [idUpdated] = await Todo.update(
             {
+                user_num,
                 title: req.body.title,
                 done: req.body.done,
             }, {
@@ -58,6 +61,7 @@ exports.deleteTodo = async (req, res) => {
       let isDeleted = await Todo.destroy({
         where: {
           id: { [Op.eq]: req.params.todoId },
+          user_num
         },
       });
       // 삭제 실패
